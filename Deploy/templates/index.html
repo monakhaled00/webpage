@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css')}}" type="text/css"> 
+    <title>Gemstone Price Prediction</title>
+    
+    <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: rgba(255, 255, 255, 0.5);
+    background-image: url('https://images.unsplash.com/photo-1625479610681-f789345a8157?q=80&w=1854&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+}
+
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    font-weight: bold;
+    font-size: 40px;
+    color: #f7fcf8;
+}
+
+
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.4); 
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: rgb(12, 12, 12);
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+#cut,
+#color,
+#clarity {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border-color: #333;
+}
+
+
+
+input[type="text"],
+select {
+
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>') no-repeat right 10px center;
+    background-size: 15px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #282727;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #282727;
+}
+
+.predicted-price {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 24px; 
+    color: #070707;
+}
+
+    </style>
+
+</head>
+<body>
+    <h1>Gemstone Price Prediction</h1>
+    <form action="/" method="post">
+        <label for="carat">Carat:</label><br>
+        <input type="text" id="carat" name="carat"><br><br>
+
+        <label for="cut">Cut:</label><br>
+        <select id="cut" name="cut">
+            <option value="Ideal">Ideal</option>
+            <option value="Premium">Premium</option>
+            <option value="Good">Good</option>
+            <option value="Very Good">Very Good</option>
+            <option value="Fair">Fair</option>
+        </select><br><br>
+
+        <label for="color">Color:</label><br>
+        <select id="color" name="color">
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>
+            <option value="H">H</option>
+            <option value="I">I</option>
+            <option value="J">J</option>
+        </select><br><br>
+
+        <label for="clarity">Clarity:</label><br>
+        <select id="clarity" name="clarity">
+            <option value="IF">IF</option>
+            <option value="VVS1">VVS1</option>
+            <option value="VVS2">VVS2</option>
+            <option value="VS1">VS1</option>
+            <option value="VS2">VS2</option>
+            <option value="SI1">SI1</option>
+            <option value="SI2">SI2</option>
+            <option value="I1">I1</option>
+            <option value="I2">I2</option>
+            <option value="I3">I3</option>
+        </select><br><br>
+
+        <label for="depth">Depth:</label><br>
+        <input type="text" id="depth" name="depth"><br><br>
+
+        <label for="table">Table:</label><br>
+        <input type="text" id="table" name="table"><br><br>
+
+        <label for="x">X Dimension:</label><br>
+        <input type="text" id="x" name="x"><br><br>
+
+        <label for="y">Y Dimension:</label><br>
+        <input type="text" id="y" name="y"><br><br>
+
+        <label for="z">Z Dimension:</label><br>
+        <input type="text" id="z" name="z"><br><br>
+
+        <input type="submit" value="Predict">
+        
+        <p class="predicted-price">Predicted Price: ${{ prediction }}</p>
+
+    </form>
+</body>
+</html>
